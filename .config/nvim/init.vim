@@ -4,7 +4,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-pairs']
+let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-tslint', 'coc-pairs']
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
@@ -17,6 +17,7 @@ Plug 'vim-test/vim-test'
 Plug 'fratajczak/one-monokai-vim'
 Plug 'gcmt/taboo.vim'
 Plug 'mhinz/vim-signify'
+Plug 'szw/vim-maximizer'
 call plug#end()
 
 " THEMES
@@ -121,6 +122,12 @@ function! LoadSession()
 		let b:sessiondir = ""
 	endif
 endfunction
+
+" FAR.VIM
+let g:far#source = 'rg'
+
+" MAXIMIZER
+nnoremap <C-f> :MaximizerToggle<CR>
 
 " MISC
 " open new split panes to right and below
