@@ -36,6 +36,7 @@
 - C-p to FZF
 - C-g to global search
 - :GF? to FZF Gstatus
+- leader b to navigate buffers
 - leader d to revision diff
   - n and N to move
 - leader c space to toggle comment
