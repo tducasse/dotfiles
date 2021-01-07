@@ -24,7 +24,7 @@
 - :PlugUpgrade to upgrade
 - C-b is nerdtree
   - navigate with j-k
-  - CR to open
+  - enter to open
   - s to vsplit
   - t to tab
   - cd to change pwd
@@ -44,7 +44,7 @@
 - :G for git status
   - X to discard
   - s to add
-  - u to unstange
+  - u to unstage
   - dv vdiffsplit
 - :Gvd for vdiffsplit
 - :Gblame for git blame
@@ -55,6 +55,8 @@
   - Tab and S-Tab to move around completions
 - ]g and [g to go to next warn/err
 - gd to go to def
+- gh to show documentation
+  - gh again to close it
 - gr to get references
 - :MakeSession() to create a new session, based on the folder
 - :LoadSession() to load a previous session, based on the folder
@@ -62,4 +64,5 @@
 - :tabnew, then :tcd NEW_PATH to create a new tab in a different folder
   - nerdtree and the tab name auto-update
 - C-l to dismiss the search highlights
+- C-f to toggle maximize current file
 
