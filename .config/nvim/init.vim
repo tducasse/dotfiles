@@ -70,7 +70,7 @@ command! -bang -nargs=* Rg
 			\           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
 			\   <bang>0)
 nnoremap <C-g> :Rg<CR>
-nnoremap <leader>b :Buffers<CR>
+nnoremap <leader><Tab> :Buffers<CR>
 
 " COC.NVIM
 inoremap <silent><expr> <c-space> coc#refresh()
