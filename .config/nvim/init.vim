@@ -18,6 +18,9 @@ Plug 'fratajczak/one-monokai-vim'
 Plug 'gcmt/taboo.vim'
 Plug 'mhinz/vim-signify'
 Plug 'szw/vim-maximizer'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+Plug 'brooth/far.vim'
 call plug#end()
 
 " THEMES
@@ -29,11 +32,18 @@ let g:monokai_term_italic = 1
 let g:monokai_gui_italic = 1
 colorscheme one-monokai
 
+" SESSIONS
+let g:session_autosave = 'no'
+
 " NERDTREE
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
+let g:NERDTreeUseTCD = 1
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+			\ quit | endif
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
@@ -62,7 +72,6 @@ nnoremap <C-p> :FZF<CR>
 let g:fzf_buffers_jump = 1
 let $FZF_DEFAULT_COMMAND = 'fd -t f'
 let $FZF_DEFAULT_OPTS = '--ansi --preview ''bat --color=always --style=numbers {}'''
-" search in files
 command! -bang -nargs=* Rg
 			\ call fzf#vim#grep(
 			\   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
@@ -90,7 +99,7 @@ function! s:show_documentation()
 	elseif (coc#rpc#ready())
 		if (coc#float#has_float())
 			call coc#float#close_all()
-		else 
+		else
 			call CocActionAsync('doHover')
 		endif
 	else
@@ -101,53 +110,19 @@ endfunction
 " TABS
 let g:taboo_tab_format	= " %P "
 
-" SESSIONS
-" Creates a session
-function! MakeSession()
-	let b:sessiondir = $HOME . "/.vim/sessions" . getcwd(1, 1)
-	if (filewritable(b:sessiondir) != 2)
-		exe 'silent !mkdir -p ' b:sessiondir
-		redraw!
-	endif
-	let b:sessionfile = b:sessiondir . '/session.vim'
-	exe "mksession! " . b:sessionfile
-endfunction
-
-" Updates a session, BUT ONLY IF IT ALREADY EXISTS
-function! UpdateSession()
-	exe "tabdo NERDTreeClose"
-	let b:sessiondir = $HOME . "/.vim/sessions" . getcwd(1, 1)
-	let b:sessionfile = b:sessiondir . "/session.vim"
-	if (filereadable(b:sessionfile))
-		exe "mksession! " . b:sessionfile
-		echo "updating session"
-	endif
-endfunction
-
-" Loads a session if it exists
-function! LoadSession()
-	if argc() == 0
-		let b:sessiondir = $HOME . "/.vim/sessions" . getcwd(1, 1)
-		let b:sessionfile = b:sessiondir . "/session.vim"
-		if (filereadable(b:sessionfile))
-			exe 'source ' b:sessionfile
-		else
-			echo "No session loaded."
-		endif
-	else
-		let b:sessionfile = ""
-		let b:sessiondir = ""
-	endif
-endfunction
-
 " FAR.VIM
 let g:far#source = 'rg'
+let g:far#enable_undo = 1
+let g:far#auto_preview = 0
 
 " MAXIMIZER
 nnoremap <C-f> :MaximizerToggle<CR>
 
 " MISC
-" open new split panes to right and below
+set hidden
+set nocompatible
+set lazyredraw
+set encoding=utf-8
 set splitright
 set splitbelow
 set expandtab
