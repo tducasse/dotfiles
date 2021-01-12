@@ -39,7 +39,7 @@
 - leader tab to navigate buffers
 - leader d to revision diff
   - n and N to move
-- leader c space to toggle comment
+- gcc to toggle comment
 - C-n is visual multi
 - :Test__ for the test commands
 - :G for git status
