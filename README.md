@@ -59,9 +59,8 @@
 - gh to show documentation
   - gh again to close it
 - gr to get references
-- :MakeSession() to create a new session, based on the folder
-- :LoadSession() to load a previous session, based on the folder
-- :UpdateSession() to update the current session if it exists
+- :SaveSession NAME to save a session
+- :OpenSession [NAME] to open a session / list session (without args)
 - :tabnew, then :tcd NEW_PATH to create a new tab in a different folder
   - nerdtree and the tab name auto-update
 - C-l to dismiss the search highlights
