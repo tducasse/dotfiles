@@ -45,7 +45,7 @@ let g:NERDTreeUseTCD = 1
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
 			\ quit | endif
 " Toggle
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+nnoremap <silent> <C-b> :NERDTreeFocus<CR>
 
 " GIT
 function! DiffNav()
