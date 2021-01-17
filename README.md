@@ -69,6 +69,14 @@
 
 ## On windows/wsl
 - make sure to alias `fdfind` to `fd` in `.zshenv`
+- install `VcXsrv` to get copy/paste across the two OSes
+  - also add the following to `.zshrc`
+  ```
+export EDITOR='nvim'
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+export LIBGL_ALWAYS_INDIRECT=1
+
+  ```
 
 ## Sample `git config --global`
 ```
