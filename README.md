@@ -13,6 +13,7 @@
 - zsh
 - oh my zsh
 - powerlevel10k
+- delta (git diff)
 
 ## Neovim
 ### Keys
@@ -66,3 +67,5 @@
 - C-l to dismiss the search highlights
 - C-f to toggle maximize current file
 
+## On windows/wsl
+- make sure to alias `fdfind` to `fd` in `.zshenv`
