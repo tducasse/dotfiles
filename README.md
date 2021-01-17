@@ -69,3 +69,28 @@
 
 ## On windows/wsl
 - make sure to alias `fdfind` to `fd` in `.zshenv`
+
+## Sample `git config --global`
+```
+
+[credential]
+	helper = store
+[user]
+	name = NAME
+	email = EMAIL
+[core]
+	pager = delta
+[delta]
+	plus-color = "#012800"
+	minus-color = "#340001"
+	syntax-theme = Monokai Extended
+	side-by-side = true
+	navigate = true
+[interactive]
+	diffFilter = delta --color-only
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+```
