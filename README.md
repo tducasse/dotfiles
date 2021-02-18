@@ -65,4 +65,6 @@
   - nerdtree and the tab name auto-update
 - C-l to dismiss the search highlights
 - C-f to toggle maximize current file
-
+- TAB to move to the next buffer
+- SHIFT TAB to move to the previous buffer
+- leader q to delete all the other buffers
