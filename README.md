@@ -13,6 +13,7 @@
 - zsh
 - oh my zsh
 - powerlevel10k
+- delta (git diff)
 
 ## Neovim
 ### Keys
@@ -68,3 +69,39 @@
 - TAB to move to the next buffer
 - SHIFT TAB to move to the previous buffer
 - leader q to delete all the other buffers
+
+## On windows/wsl
+- make sure to alias `fdfind` to `fd` in `.zshenv`
+- install `VcXsrv` to get copy/paste across the two OSes
+  - also add the following to `.zshrc`
+  ```
+	export EDITOR='nvim'
+	export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+	export LIBGL_ALWAYS_INDIRECT=1
+
+  ```
+
+## Sample `git config --global`
+```
+
+[credential]
+	helper = store
+[user]
+	name = NAME
+	email = EMAIL
+[core]
+	pager = delta
+[delta]
+	plus-color = "#012800"
+	minus-color = "#340001"
+	syntax-theme = Monokai Extended
+	side-by-side = true
+	navigate = true
+[interactive]
+	diffFilter = delta --color-only
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+```
