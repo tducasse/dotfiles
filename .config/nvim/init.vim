@@ -107,14 +107,22 @@ function! s:show_documentation()
 		execute '!' . &keywordprg . " " . expand('<cword>')
 	endif
 endfunction
+command! -nargs=0 CocStop :call coc#rpc#stop()
 
 " TABS
 let g:taboo_tab_format	= " %P "
+
 
 " FAR.VIM
 let g:far#source = 'rg'
 let g:far#enable_undo = 1
 let g:far#auto_preview = 0
+
+" AIRLINE
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_section_b = ''
 
 " MAXIMIZER
 nnoremap <C-f> :MaximizerToggle<CR>
@@ -153,4 +161,8 @@ if maparg('<C-L>', 'n') ==# ''
 	nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 map <space> <leader>
-
+" Switch buffers with TAB and SHIFT+TAB
+nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+command! BufOnly execute '%bdelete|edit #|normal `"'
+nnoremap <silent> <leader>q :BufOnly<CR>
