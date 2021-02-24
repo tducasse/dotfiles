@@ -13,7 +13,6 @@
 - zsh
 - oh my zsh
 - powerlevel10k
-- delta (git diff)
 
 ## Neovim
 ### Keys
